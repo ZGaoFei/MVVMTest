@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mvvmtest.R;
 import com.example.mvvmtest.chapters.model.ChaptersModel;
+import com.example.mvvmtest.detail.BlogListActivity;
 
 import java.util.List;
 
@@ -42,9 +43,18 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterH
         if (model != null && model.getData() != null) {
             List<ChaptersModel.Data> data = model.getData();
             if (data != null) {
-                holder.tvName.setText(data.get(position).getName());
+                ChaptersModel.Data item = data.get(position);
+                holder.tvName.setText(item.getName());
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        BlogListActivity.start(context, item.getId());
+                    }
+                });
             }
         }
+
     }
 
     @Override

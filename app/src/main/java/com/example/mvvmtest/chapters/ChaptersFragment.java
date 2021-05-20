@@ -56,10 +56,6 @@ public class ChaptersFragment extends BaseFragment {
         viewModel.requestChapters().observe(this, new Observer<ChaptersModel>() {
             @Override
             public void onChanged(ChaptersModel chaptersModel) {
-                Log.e("zgf", "======onChanged=======" + chaptersModel.getErrorCode());
-                Log.e("zgf", "======onChanged=======" + chaptersModel.getData());
-                Log.e("zgf", "======onChanged=======" + chaptersModel.getData().size());
-                Log.e("zgf", "======onChanged=======" + chaptersModel.getData().get(0).getName());
                 adapter.update(chaptersModel);
             }
         });
